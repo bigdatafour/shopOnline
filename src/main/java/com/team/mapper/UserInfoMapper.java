@@ -9,7 +9,10 @@ import java.util.List;
 @Repository
 @Component
 public interface UserInfoMapper {
-    public  UserInfo get(String userName);
-    public void add (UserInfo userInfo);
+    public  UserInfo getName(String userName);
+    public void addUser (UserInfo userInfo);
+    public UserInfo getPwd(String userName);
+    public void updateStatus(String userName);
+
     public List<UserInfo> list();
 }

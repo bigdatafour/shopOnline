@@ -12,11 +12,16 @@
         <result column="user_login_status" jdbcType="VARCHAR" property="user_login_status" />
     </resultMap>
 
-    <select id="get" parameterType="String" resultType="com.team.pojo.UserInfo">
-     select * from user_info where user_name =#{user_name}
+    <select id="getName" parameterType="String" resultType="com.team.pojo.UserInfo">
+        select * from user_info where user_name =#{user_name}
     </select>
-    <select id="add" parameterType="com.team.pojo.UserInfo">
+    <select id="addUser" parameterType="com.team.pojo.UserInfo">
         insert into user_info ( user_name,user_password,user_phone,user_address,user_mail,user_login_status ) values (#{user_name},#{user_password},#{user_phone},#{user_address},#{user_mail},#{user_login_status})
     </select>
-
+    <select id="getPwd" parameterType="String" resultType="com.team.pojo.UserInfo">
+        select * from user_info where user_name = #{user_name}
+    </select>
+    <update id="updateStatus" parameterType="String">
+        update user_info set user_login_status = 0 where user_name = #{user_name}
+    </update>
 </mapper>

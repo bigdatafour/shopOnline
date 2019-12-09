@@ -14,22 +14,36 @@ public class UserInfoServiceImpl implements UserInfoService {
     UserInfoMapper userInfoMapper;
 
     @Override
-    public Boolean get(String userName) {
+    public Boolean getName(String userName) {
         Boolean flag = false;
-        if(userInfoMapper.get(userName) != null){
+        if(userInfoMapper.getName(userName) != null){
             flag = true;    //当flag=true的时候,代表数据库中已经有这个用户名
         }
         return flag;
     }
 
     @Override
-    public void add(UserInfo userInfo) {
-        userInfoMapper.add(userInfo);
+    public void addUser(UserInfo userInfo) {
+        userInfoMapper.addUser(userInfo);
+    }
+
+    @Override
+    public Boolean getPwd(UserInfo userInfo) {
+        Boolean flag = false;
+        if(userInfo.getUser_password().equals(userInfoMapper.getPwd(userInfo.getUser_name()).getUser_password())){
+            flag = true;    //当flag=true的时候，代表这个用户从前端输入的密码与数据库里的密码相匹配，登录成功
+        }
+        return flag;
     }
 
     @Override
     public List<UserInfo> list() {
         return userInfoMapper.list();
+    }
+
+    @Override
+    public void updateStatus(String userName) {
+        userInfoMapper.updateStatus(userName);
     }
 
 }
