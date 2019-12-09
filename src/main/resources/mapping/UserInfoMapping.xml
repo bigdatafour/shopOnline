@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.mapper.UserInfoMapper">
+
+    <resultMap id="test1" type="com.team.pojo.UserInfo">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <result column="user_name" jdbcType="VARCHAR" property="user_name" />
+        <result column="user_password" jdbcType="VARCHAR" property="user_password" />
+        <result column="user_phone" jdbcType="VARCHAR" property="user_phone" />
+        <result column="user_address" jdbcType="VARCHAR" property="user_address" />
+        <result column="user_mail" jdbcType="VARCHAR" property="user_mail" />
+        <result column="user_login_status" jdbcType="VARCHAR" property="user_login_status" />
+    </resultMap>
+
+    <select id="get" parameterType="String" resultType="com.team.pojo.UserInfo">
+     select * from user_info where user_name =#{user_name}
+    </select>
+    <select id="add" parameterType="com.team.pojo.UserInfo">
+        insert into user_info ( user_name,user_password,user_phone,user_address,user_mail,user_login_status ) values (#{user_name},#{user_password},#{user_phone},#{user_address},#{user_mail},#{user_login_status})
+    </select>
+
+</mapper>
