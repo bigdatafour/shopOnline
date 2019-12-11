@@ -13,4 +13,6 @@ public interface UserInfoService {
     List<UserInfo> list();
 
     void updateStatus(String userName);
+
+    void signOutStatusChange(String user_name);
 }

@@ -46,4 +46,9 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfoMapper.updateStatus(userName);
     }
 
+    @Override
+    public void signOutStatusChange(String user_name) {
+        userInfoMapper.signOutStatusChange(user_name);
+    }
+
 }

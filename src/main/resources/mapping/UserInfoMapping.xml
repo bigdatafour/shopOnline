@@ -24,4 +24,7 @@
     <update id="updateStatus" parameterType="String">
         update user_info set user_login_status = 0 where user_name = #{user_name}
     </update>
+    <update id="signOutStatusChange" parameterType="String">
+        update user_info set user_login_status = 1 where user_name = #{user_name}
+    </update>
 </mapper>

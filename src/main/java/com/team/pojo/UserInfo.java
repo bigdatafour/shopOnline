@@ -1,5 +1,8 @@
 package com.team.pojo;
 
+/**
+ * 用户类
+ */
 public class UserInfo {
     private int user_id;
     private String user_name;
@@ -7,6 +10,7 @@ public class UserInfo {
     private String user_phone;
     private String user_address;
     private String user_mail;
+    //用户登录状态
     private int user_login_status;
 
     @Override
