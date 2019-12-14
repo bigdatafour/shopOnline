@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 @RequestMapping("/shopOnline")
 @RestController
 public class UserInfoController {
+    private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(UserInfoController.class);
     @Autowired
     private UserInfoService userInfoService;
 
@@ -18,7 +18,8 @@ public class UserInfoController {
     @RequestMapping(value="registerUser", method = {RequestMethod.POST}, produces = "application/json;charset=UTF-8")
     public Boolean addUser (@RequestBody UserInfo userInfo){
         Boolean flag = false;
-        System.out.println(userInfo.getUser_name());
+        //System.out.println(userInfo.getUser_name());
+        LOG.warn(userInfo.getUser_name());
         if(userInfoService.getName(userInfo.getUser_name()) == false){   //如果数据库里查无此人，那么此人可以注册
             userInfoService.addUser(userInfo);
             flag = true;
