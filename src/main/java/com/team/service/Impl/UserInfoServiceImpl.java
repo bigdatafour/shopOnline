@@ -1,6 +1,7 @@
 package com.team.service.Impl;
 
 import com.team.mapper.UserInfoMapper;
+import com.team.pojo.Advertisement;
 import com.team.pojo.UserInfo;
 import com.team.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,6 @@ public class UserInfoServiceImpl implements UserInfoService {
         return flag;
     }
 
-    @Override
-    public List<UserInfo> list() {
-        return userInfoMapper.list();
-    }
 
     @Override
     public void updateStatus(String userName) {
@@ -49,6 +46,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public void signOutStatusChange(String user_name) {
         userInfoMapper.signOutStatusChange(user_name);
+    }
+
+    @Override
+    public void adClick(Advertisement advertisement) {
+        userInfoMapper.adClick(advertisement);
     }
 
 }

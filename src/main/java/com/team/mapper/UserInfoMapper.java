@@ -1,5 +1,6 @@
 package com.team.mapper;
 
+import com.team.pojo.Advertisement;
 import com.team.pojo.UserInfo;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -41,5 +42,10 @@ public interface UserInfoMapper {
      */
     public void signOutStatusChange(String userName);
 
-    public List<UserInfo> list();
+
+    /**
+     * 用户点击广告以后，调用此方法，在数据库里添加一条属于某区域的广告点击信息
+     * @param advertisement
+     */
+    void adClick(Advertisement advertisement);
 }
