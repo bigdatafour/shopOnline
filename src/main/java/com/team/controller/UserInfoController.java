@@ -16,6 +16,7 @@ import java.security.NoSuchAlgorithmException;
 @RequestMapping("/shopOnline")
 @RestController
 public class UserInfoController {
+    private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(UserInfoController.class);
     @Autowired
     private UserInfoService userInfoService;
 
@@ -32,6 +33,7 @@ public class UserInfoController {
     public Boolean addUser (@RequestBody UserInfo userInfo) {
         Boolean flag = false;
         System.out.println("注册用户-->"+userInfo.getUser_name());
+        LOG.warn(userInfo.getUser_name());
         if(userInfoService.getName(userInfo.getUser_name()) == false){   //如果数据库里查无此人，那么此人可以注册
             try {
                 userInfo.setUser_password(PasswordEncrypt.encodeByMd5(userInfo.getUser_password()));
@@ -57,6 +59,7 @@ public class UserInfoController {
     public String userLogin (@RequestBody UserInfo userInfo, HttpSession session){
         String str = "";
         System.out.println(userInfo.getUser_name()+" "+userInfo.getUser_password());
+        LOG.warn(userInfo.getUser_name());
         try {
             userInfo.setUser_password(PasswordEncrypt.encodeByMd5(userInfo.getUser_password()));
         } catch (NoSuchAlgorithmException e) {
