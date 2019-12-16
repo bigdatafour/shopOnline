@@ -88,6 +88,7 @@ public class UserInfoController {
     @RequestMapping(value = "goodsClick", method = {RequestMethod.POST}, produces = "application/json;charset=UTF-8")
     public void getGoods(@RequestBody Goods goods){
         System.out.println(goods.getGoodsName());
+        LOG.warn(goods.getGoodsName());
     }
 
     /**
